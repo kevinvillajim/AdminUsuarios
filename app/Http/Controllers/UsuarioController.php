@@ -36,6 +36,8 @@ class UsuarioController extends Controller
         $usuario->telefono = $request->telefono;
         $usuario->direccion = $request->direccion;
         $usuario->activo = $request->activo;
+        $usuario->save();
+        return "El usuario fue guardado";
     }
 
     /**
@@ -74,7 +76,7 @@ class UsuarioController extends Controller
             $usuario->direccion = $request->direccion;
             $usuario->activo = $request->activo;
             $usuario->save();
-            return $usuario;
+            return "El usuario fue actualizado";
         }
     }
 
@@ -86,7 +88,7 @@ class UsuarioController extends Controller
         $usuario = Usuario::find($id);
         if ($usuario) {
             $usuario->delete();
-            return $usuario;
+            return "El usuario fue eliminado";
         } else {
             return "No se encontro el usuario";
         }
